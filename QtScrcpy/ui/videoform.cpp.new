@@ -1,0 +1,17 @@
+void VideoForm::updateRender(int width, int height, uint8_t* dataY, uint8_t* dataU, uint8_t* dataV, int linesizeY, int linesizeU, int linesizeV)
+{
+    if (m_videoWidget->isHidden()) {
+        if (m_loadingWidget) {
+            m_loadingWidget->close();
+        }
+        m_videoWidget->show();
+    }
+
+    updateShowSize(QSize(width, height));
+    m_videoWidget->setFrameSize(QSize(width, height));
+
+    // Only update textures if not in keymap-only mode
+    if (!keymap_only) {
+        m_videoWidget->updateTextures(dataY, dataU, dataV, linesizeY, linesizeU, linesizeV);
+    }
+}

@@ -1,0 +1,12 @@
+/home/pc/Projects/QtScrcpy/CMakeFiles/edit_cache.dir
+/home/pc/Projects/QtScrcpy/CMakeFiles/rebuild_cache.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/edit_cache.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/rebuild_cache.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy_autogen.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpyCore/CMakeFiles/QtScrcpyCore.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpyCore/CMakeFiles/edit_cache.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpyCore/CMakeFiles/rebuild_cache.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpyCore/CMakeFiles/QtScrcpyCore_autogen_timestamp_deps.dir
+/home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpyCore/CMakeFiles/QtScrcpyCore_autogen.dir

@@ -19,7 +19,7 @@ class VideoForm : public QWidget, public qsc::DeviceObserver
 {
     Q_OBJECT
 public:
-    explicit VideoForm(bool framelessWindow = false, bool skin = true, bool showToolBar = true, QWidget *parent = 0);
+    explicit VideoForm(bool framelessWindow = false, bool skin = true, bool showToolbar = true, QWidget *parent = 0);
     ~VideoForm();
 
     void staysOnTop(bool top = true);
@@ -33,6 +33,9 @@ public:
     void showFPS(bool show);
     void switchFullScreen();
     bool isHost();
+    
+    // Add flag to control video rendering
+    bool keymap_only = false;
 
 private:
     void onFrame(int width, int height, uint8_t* dataY, uint8_t* dataU, uint8_t* dataV,

@@ -18,6 +18,7 @@
 #endif
 
 #include "config.h"
+#include "dialog.h"
 #include "iconhelper.h"
 #include "qyuvopenglwidget.h"
 #include "toolform.h"
@@ -158,7 +159,28 @@ void VideoForm::updateRender(int width, int height, uint8_t* dataY, uint8_t* dat
 
     updateShowSize(QSize(width, height));
     m_videoWidget->setFrameSize(QSize(width, height));
-    m_videoWidget->updateTextures(dataY, dataU, dataV, linesizeY, linesizeU, linesizeV);
+
+    // Only update textures if not in keymap-only mode
+    if (!keymap_only) {
+        m_videoWidget->updateTextures(dataY, dataU, dataV, linesizeY, linesizeU, linesizeV);
+        return;
+    }
+
+    // Normal mode - render video frames
+    if (m_videoWidget->isHidden()) {
+        if (m_loadingWidget) {
+            m_loadingWidget->close();
+        }
+        m_videoWidget->show();
+    }
+
+    updateShowSize(QSize(width, height));
+    m_videoWidget->setFrameSize(QSize(width, height));
+    
+    // Only update textures if not in keymap-only mode
+    if (!keymap_only) {
+        m_videoWidget->updateTextures(dataY, dataU, dataV, linesizeY, linesizeU, linesizeV);
+    }
 }
 
 void VideoForm::setSerial(const QString &serial)

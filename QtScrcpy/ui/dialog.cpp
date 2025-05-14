@@ -138,8 +138,6 @@ Dialog::~Dialog()
 void Dialog::initUI()
 {
     setAttribute(Qt::WA_DeleteOnClose);
-    //setWindowFlags(windowFlags() | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint | Qt::CustomizeWindowHint);
-
     setWindowTitle(Config::getInstance().getTitle());
 
 #ifdef Q_OS_WIN32
@@ -165,10 +163,9 @@ void Dialog::initUI()
     ui->lockOrientationBox->addItem("270");
     ui->lockOrientationBox->setCurrentIndex(0);
 
-    // 加载IP历史记录
+    // Load IP history
     loadIpHistory();
 
-    // 为deviceIpEdt添加右键菜单
     if (ui->deviceIpEdt->lineEdit()) {
         ui->deviceIpEdt->lineEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
         connect(ui->deviceIpEdt->lineEdit(), &QWidget::customContextMenuRequested,
@@ -206,6 +203,13 @@ void Dialog::updateBootConfig(bool toView)
         ui->useSingleModeCheck->setChecked(config.simpleMode);
         ui->autoUpdatecheckBox->setChecked(config.autoUpdateDevice);
         ui->showToolbar->setChecked(config.showToolbar);
+
+        // Load keymap-only mode setting
+        QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
+        if (keymapOnlyBox) {
+            keymapOnlyBox->setChecked(config.keymapOnly);
+        }
+
     } else {
         UserBootConfig config;
 
@@ -226,7 +230,13 @@ void Dialog::updateBootConfig(bool toView)
         config.autoUpdateDevice = ui->autoUpdatecheckBox->isChecked();
         config.showToolbar = ui->showToolbar->isChecked();
 
-        // 保存当前IP到历史记录
+        // Save keymap-only mode setting
+        QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
+        if (keymapOnlyBox) {
+            config.keymapOnly = keymapOnlyBox->isChecked();
+        }
+
+        // Save current IP to history
         QString currentIp = ui->deviceIpEdt->currentText().trimmed();
         if (!currentIp.isEmpty()) {
             saveIpHistory(currentIp);
@@ -323,9 +333,18 @@ void Dialog::on_startServerBtn_clicked()
     params.bitRate = getBitRate();
     // on devices with Android >= 10, the capture frame rate can be limited
     params.maxFps = static_cast<quint32>(Config::getInstance().getMaxFps());
-    params.closeScreen = ui->closeScreenCheck->isChecked();
+
+    // Handle keymap-only mode
+    QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
+    if (keymapOnlyBox && keymapOnlyBox->isChecked()) {
+        params.display = true;  // Keep window open for interaction
+        params.closeScreen = true;  // Turn off device screen only
+    } else {
+        params.closeScreen = ui->closeScreenCheck->isChecked();
+        params.display = !ui->notDisplayCheck->isChecked();
+    }
+
     params.useReverse = ui->useReverseCheck->isChecked();
-    params.display = !ui->notDisplayCheck->isChecked();
     params.renderExpiredFrames = Config::getInstance().getRenderExpiredFrames();
     if (ui->lockOrientationBox->currentIndex() > 0) {
         params.captureOrientationLock = 1;
@@ -372,7 +391,7 @@ void Dialog::on_wirelessConnectBtn_clicked()
         return;
     }
 
-    // 保存IP历史记录 - 只保存IP部分,不包含端口
+    // Save IP to history - only save the IP part, not including the port
     QString ip = addr.split(":").first();
     if (!ip.isEmpty()) {
         saveIpHistory(ip);
@@ -481,7 +500,6 @@ void Dialog::onDeviceConnected(bool success, const QString &serial, const QStrin
     qsc::IDeviceManage::getInstance().getDevice(serial)->setUserData(static_cast<void*>(videoForm));
     qsc::IDeviceManage::getInstance().getDevice(serial)->registerDeviceObserver(videoForm);
 
-
     videoForm->showFPS(ui->fpsCheck->isChecked());
 
     if (ui->alwaysTopCheck->isChecked()) {
@@ -497,6 +515,7 @@ void Dialog::onDeviceConnected(bool success, const QString &serial, const QStrin
         name = Config::getInstance().getTitle();
     }
     videoForm->setWindowTitle(name + "-" + serial);
+
     videoForm->updateShowSize(size);
 
     bool deviceVer = size.height() > size.width();
@@ -507,6 +526,16 @@ void Dialog::onDeviceConnected(bool success, const QString &serial, const QStrin
         // mark: resize is for fix setGeometry magneticwidget bug
         videoForm->resize(rc.size());
         videoForm->setGeometry(rc);
+    }
+
+    // Check if keymap-only mode is enabled and turn off screen immediately
+    QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
+    if (keymapOnlyBox && keymapOnlyBox->isChecked()) {
+        videoForm->keymap_only = true;
+        auto device = qsc::IDeviceManage::getInstance().getDevice(serial);
+        if (device) {
+            device->setDisplayPower(false);
+        }
     }
 
 #ifdef Q_OS_WIN32
@@ -811,7 +840,7 @@ void Dialog::saveIpHistory(const QString &ip)
     
     Config::getInstance().saveIpHistory(ip);
     
-    // 更新ComboBox
+    // Update ComboBox
     loadIpHistory();
     ui->deviceIpEdt->setCurrentText(ip);
 }

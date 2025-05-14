@@ -23,6 +23,7 @@ struct UserBootConfig
     bool simpleMode       = false;
     bool autoUpdateDevice = true;
     bool showToolbar      = true;
+    bool keymapOnly      = false;  // New option for keymap-only mode
 };
 
 class QSettings;

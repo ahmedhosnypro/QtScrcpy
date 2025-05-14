@@ -49,8 +49,7 @@ void ToolForm::initStyle()
     IconHelper::Instance()->SetIcon(ui->closeScreenBtn, QChar(0xf070), 15);
     IconHelper::Instance()->SetIcon(ui->powerBtn, QChar(0xf011), 15);
     IconHelper::Instance()->SetIcon(ui->expandNotifyBtn, QChar(0xf103), 15);
-    IconHelper::Instance()->SetIcon(ui->screenShotBtn, QChar(0xf0c4), 15);
-    IconHelper::Instance()->SetIcon(ui->touchBtn, QChar(0xf111), 15);
+    IconHelper::Instance()->SetIcon(ui->touchBtn, QChar(0xf25a), 15);    // Adding touch button icon
     IconHelper::Instance()->SetIcon(ui->groupControlBtn, QChar(0xf0c0), 15);
 }
 

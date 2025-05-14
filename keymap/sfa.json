@@ -1,0 +1,138 @@
+{
+  "switchKey": "Key_Control",
+  "mouseMoveMap": {
+		"startPos": {
+			"x": 0.5,
+			"y": 0.5
+		},
+		"speedRatioX": 0.0001,
+		"speedRatioY": 0.0001
+	},
+  "keyMapNodes": [
+    {
+      "comment": "",
+      "type": "KMT_STEER_WHEEL",
+      "centerPos": {
+        "x": 0.2134,
+        "y": 0.5404
+      },
+      "leftOffset": 0.075,
+      "rightOffset": 0.075,
+      "upOffset": 0.100,
+      "downOffset": 0.100,
+      "leftKey": "Key_A",
+      "rightKey": "Key_D",
+      "upKey": "Key_W",
+      "downKey": "Key_S",
+      "switchMap": true,
+      "opacity": 0.52,
+      "speed": 10
+    },
+    {
+      "comment": "",
+      "type": "KMT_CLICK",
+      "pos": {
+        "x": 0.8563,
+        "y": 0.406
+      },
+      "key": "ForwardButton",
+      "switchMap": false
+    },
+    {
+      "comment": "",
+      "type": "KMT_CLICK",
+      "pos": {
+        "x": 0.803,
+        "y": 0.5229
+      },
+      "key": "BackButton",
+      "switchMap": false
+    },
+    {
+      "comment": "",
+      "type": "KMT_CLICK",
+      "pos": {
+        "x": 0.9054,
+        "y": 0.5703
+      },
+      "key": "LeftButton",
+      "switchMap": false
+    },
+    {
+      "comment": "",
+      "type": "KMT_CLICK",
+      "pos": {
+        "x": 0.8421,
+        "y": 0.6968
+      },
+      "key": "RightButton",
+      "switchMap": false
+    },
+    {
+      "comment": "",
+      "type": "KMT_DRAG",
+      "startPos": {
+        "x": 0.6900,
+        "y": 0.8800
+      },
+      "endPos": {
+        "x": 0.6900,
+        "y": 1.200
+      },
+      "key": "Key_X",
+      "startDelay": 0,
+      "dragSpeed": 1000,
+      "switchMap": false
+    },
+    {
+      "comment": "",
+      "type": "KMT_DRAG",
+      "startPos": {
+        "x": 0.6900,
+        "y": 0.8800
+      },
+      "endPos": {
+        "x": 0.6921,
+        "y": 0.6500
+      },
+      "key": "Key_2",
+      "startDelay": 0,
+      "dragSpeed": 1000,
+      "switchMap": false
+    },
+    {
+      "comment": "",
+      "type": "KMT_DRAG",
+      "startPos": {
+        "x": 0.6900,
+        "y": 0.8800
+      },
+      "endPos": {
+        "x": 0.9500,
+        "y": 0.8800
+      },
+      "key": "Key_E",
+      "startDelay": 0,
+      "dragSpeed": 1000,
+      "switchMap": false
+    },
+    {
+      "comment": "",
+      "type": "KMT_DRAG",
+      "startPos": {
+        "x": 0.6900,
+        "y": 0.8800
+      },
+      "endPos": {
+        "x": 0.4500,
+        "y": 0.8800
+      },
+      "key": "Key_Q",
+      "startDelay": 0,
+      "dragSpeed": 1000,
+      "switchMap": false
+    }
+  ],
+  "width": 2400,
+  "height": 1080
+}
