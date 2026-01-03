@@ -40,6 +40,11 @@ int main(int argc, char *argv[])
     qputenv("QTSCRCPY_SERVER_PATH", "../../../QtScrcpy/QtScrcpyCore/src/third_party/scrcpy-server");
     qputenv("QTSCRCPY_KEYMAP_PATH", "../../../keymap");
     qputenv("QTSCRCPY_CONFIG_PATH", "../../../config");
+    
+    // Force XCB on Linux to support X11-based mouse keymapping features on Wayland
+    if (qgetenv("QT_QPA_PLATFORM").isEmpty()) {
+        qputenv("QT_QPA_PLATFORM", "xcb");
+    }
 #endif
 
     g_msgType = covertLogLevel(Config::getInstance().getLogLevel());

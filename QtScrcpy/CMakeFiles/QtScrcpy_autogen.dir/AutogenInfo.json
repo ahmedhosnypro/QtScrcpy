@@ -384,7 +384,7 @@
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
-	"PARALLEL" : 16,
+	"PARALLEL" : 2,
 	"PARSE_CACHE_FILE" : "/home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/libexec/uic",

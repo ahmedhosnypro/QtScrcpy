@@ -72,7 +72,7 @@ QtScrcpy/QtScrcpy_autogen/timestamp: /usr/lib/qt6/libexec/moc
 QtScrcpy/QtScrcpy_autogen/timestamp: /usr/lib/qt6/libexec/uic
 QtScrcpy/QtScrcpy_autogen/timestamp: QtScrcpy/CMakeFiles/QtScrcpy_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/pc/Projects/QtScrcpy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target QtScrcpy"
-	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E cmake_autogen /home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy_autogen.dir/AutogenInfo.json Release
+	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E cmake_autogen /home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy_autogen.dir/AutogenInfo.json RelWithDebInfo
 	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E touch /home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpy_autogen/timestamp
 
 QtScrcpy_autogen: QtScrcpy/CMakeFiles/QtScrcpy_autogen

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../output/x64/Release/QtScrcpy"
-  "../output/x64/Release/QtScrcpy.pdb"
+  "../output/x64/RelWithDebInfo/QtScrcpy"
+  "../output/x64/RelWithDebInfo/QtScrcpy.pdb"
   "CMakeFiles/QtScrcpy_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/QtScrcpy_autogen.dir/ParseCache.txt"
   "QtScrcpy_autogen"

@@ -338,7 +338,7 @@ void Dialog::on_startServerBtn_clicked()
     QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
     if (keymapOnlyBox && keymapOnlyBox->isChecked()) {
         params.display = true;  // Keep window open for interaction
-        params.closeScreen = true;  // Turn off device screen only
+        params.closeScreen = false;  // Keep device screen on for keymap mode
     } else {
         params.closeScreen = ui->closeScreenCheck->isChecked();
         params.display = !ui->notDisplayCheck->isChecked();
@@ -528,14 +528,11 @@ void Dialog::onDeviceConnected(bool success, const QString &serial, const QStrin
         videoForm->setGeometry(rc);
     }
 
-    // Check if keymap-only mode is enabled and turn off screen immediately
+    // Check if keymap-only mode is enabled
     QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
     if (keymapOnlyBox && keymapOnlyBox->isChecked()) {
         videoForm->keymap_only = true;
-        auto device = qsc::IDeviceManage::getInstance().getDevice(serial);
-        if (device) {
-            device->setDisplayPower(false);
-        }
+        // Keep screen on for keymap-only mode - no setDisplayPower(false) call
     }
 
 #ifdef Q_OS_WIN32

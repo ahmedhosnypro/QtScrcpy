@@ -54,6 +54,10 @@ static void find_grab_window_recursive(xcb_connection_t *dpy, xcb_window_t windo
 }
 
 void XMouseTap::enableMouseEventTap(QRect rc, bool enabled) {
+    if (!QX11Info::isPlatformX11()) {
+        return;
+    }
+
     if (enabled && rc.isEmpty()) {
         return;
     }

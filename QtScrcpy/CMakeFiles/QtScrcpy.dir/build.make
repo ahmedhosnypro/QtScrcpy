@@ -98,7 +98,7 @@ QtScrcpy/QtScrcpy_autogen/PNK5WDWK6L/qrc_res.cpp: QtScrcpy/res/qss/psblack/add_b
 QtScrcpy/QtScrcpy_autogen/PNK5WDWK6L/qrc_res.cpp: QtScrcpy/res/qss/psblack/checkbox_checked.png
 QtScrcpy/QtScrcpy_autogen/PNK5WDWK6L/qrc_res.cpp: /usr/lib/qt6/libexec/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/pc/Projects/QtScrcpy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for res/res.qrc"
-	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E cmake_autorcc /home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy_autogen.dir/AutoRcc_res_PNK5WDWK6L_Info.json Release
+	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E cmake_autorcc /home/pc/Projects/QtScrcpy/QtScrcpy/CMakeFiles/QtScrcpy_autogen.dir/AutoRcc_res_PNK5WDWK6L_Info.json RelWithDebInfo
 
 QtScrcpy/CMakeFiles/QtScrcpy.dir/QtScrcpy_autogen/mocs_compilation.cpp.o: QtScrcpy/CMakeFiles/QtScrcpy.dir/flags.make
 QtScrcpy/CMakeFiles/QtScrcpy.dir/QtScrcpy_autogen/mocs_compilation.cpp.o: QtScrcpy/QtScrcpy_autogen/mocs_compilation.cpp
@@ -331,41 +331,41 @@ QtScrcpy_OBJECTS = \
 # External object files for target QtScrcpy
 QtScrcpy_EXTERNAL_OBJECTS =
 
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/QtScrcpy_autogen/mocs_compilation.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/fontawesome/iconhelper.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/uibase/keepratiowidget.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/uibase/magneticwidget.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/toolform.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/videoform.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/dialog.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/render/qyuvopenglwidget.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/util/config.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/util/mousetap/mousetap.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/util/mousetap/xmousetap.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/main.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/groupcontroller/groupcontroller.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/audio/audiooutput.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/QtScrcpy_autogen/PNK5WDWK6L/qrc_res.cpp.o
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/build.make
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Multimedia.so.6.4.2
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.4.2
-output/x64/Release/QtScrcpy: output/x64/Release/libQtScrcpyCore.a
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libxkbcommon.so
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.4.2
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libGLX.so
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libOpenGL.so
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.4.2
-output/x64/Release/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
-output/x64/Release/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/pc/Projects/QtScrcpy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable ../output/x64/Release/QtScrcpy"
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/QtScrcpy_autogen/mocs_compilation.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/fontawesome/iconhelper.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/uibase/keepratiowidget.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/uibase/magneticwidget.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/toolform.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/videoform.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/dialog.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/render/qyuvopenglwidget.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/util/config.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/util/mousetap/mousetap.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/util/mousetap/xmousetap.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/main.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/groupcontroller/groupcontroller.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/audio/audiooutput.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/QtScrcpy_autogen/PNK5WDWK6L/qrc_res.cpp.o
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/build.make
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Multimedia.so.6.4.2
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.4.2
+output/x64/RelWithDebInfo/QtScrcpy: output/x64/RelWithDebInfo/libQtScrcpyCore.a
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libxkbcommon.so
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.4.2
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libGLX.so
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.4.2
+output/x64/RelWithDebInfo/QtScrcpy: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2
+output/x64/RelWithDebInfo/QtScrcpy: QtScrcpy/CMakeFiles/QtScrcpy.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/pc/Projects/QtScrcpy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable ../output/x64/RelWithDebInfo/QtScrcpy"
 	cd /home/pc/Projects/QtScrcpy/QtScrcpy && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/QtScrcpy.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E copy_if_different /home/pc/Projects/QtScrcpy/QtScrcpy/sndcpy/sndcpy.sh /home/pc/Projects/QtScrcpy/QtScrcpy/../output/x64/Release/
-	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E copy_if_different /home/pc/Projects/QtScrcpy/QtScrcpy/sndcpy/sndcpy.apk /home/pc/Projects/QtScrcpy/QtScrcpy/../output/x64/Release/
+	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E copy_if_different /home/pc/Projects/QtScrcpy/QtScrcpy/sndcpy/sndcpy.sh /home/pc/Projects/QtScrcpy/QtScrcpy/../output/x64/RelWithDebInfo/
+	cd /home/pc/Projects/QtScrcpy/QtScrcpy && /usr/bin/cmake -E copy_if_different /home/pc/Projects/QtScrcpy/QtScrcpy/sndcpy/sndcpy.apk /home/pc/Projects/QtScrcpy/QtScrcpy/../output/x64/RelWithDebInfo/
 
 # Rule to build all files generated by this target.
-QtScrcpy/CMakeFiles/QtScrcpy.dir/build: output/x64/Release/QtScrcpy
+QtScrcpy/CMakeFiles/QtScrcpy.dir/build: output/x64/RelWithDebInfo/QtScrcpy
 .PHONY : QtScrcpy/CMakeFiles/QtScrcpy.dir/build
 
 QtScrcpy/CMakeFiles/QtScrcpy.dir/clean:

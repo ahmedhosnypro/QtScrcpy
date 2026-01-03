@@ -5,8 +5,8 @@
 			"x": 0.5,
 			"y": 0.5
 		},
-		"speedRatioX": 0.0001,
-		"speedRatioY": 0.0001
+		"speedRatioX": 0.001,
+		"speedRatioY": 0.001
 	},
   "keyMapNodes": [
     {
@@ -77,11 +77,11 @@
       },
       "endPos": {
         "x": 0.6900,
-        "y": 1.200
+        "y": 1.400
       },
       "key": "Key_X",
       "startDelay": 0,
-      "dragSpeed": 1000,
+      "dragSpeed": 2000,
       "switchMap": false
     },
     {
@@ -92,12 +92,12 @@
         "y": 0.8800
       },
       "endPos": {
-        "x": 0.6921,
-        "y": 0.6500
+        "x": 0.6900,
+        "y": 0.2500
       },
       "key": "Key_2",
       "startDelay": 0,
-      "dragSpeed": 1000,
+      "dragSpeed": 3000,
       "switchMap": false
     },
     {
@@ -108,12 +108,12 @@
         "y": 0.8800
       },
       "endPos": {
-        "x": 0.9500,
+        "x": 1.2,
         "y": 0.8800
       },
       "key": "Key_E",
       "startDelay": 0,
-      "dragSpeed": 1000,
+      "dragSpeed": 2000,
       "switchMap": false
     },
     {
@@ -124,12 +124,12 @@
         "y": 0.8800
       },
       "endPos": {
-        "x": 0.4500,
+        "x": 0.00,
         "y": 0.8800
       },
       "key": "Key_Q",
       "startDelay": 0,
-      "dragSpeed": 1000,
+      "dragSpeed": 2000,
       "switchMap": false
     }
   ],

@@ -66,14 +66,14 @@ include QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps.dir/compiler_depend.
 # Include the progress variables for this target.
 include QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps.dir/progress.make
 
-QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: output/x64/Release/libQtScrcpyCore.a
-QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.4.2
-QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Multimedia.so.6.4.2
 QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
-QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
+QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: output/x64/RelWithDebInfo/libQtScrcpyCore.a
 QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.4.2
+QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
+QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.4.2
 QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.4.2
 QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.4.2
+QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Multimedia.so.6.4.2
 
 QtScrcpy_autogen_timestamp_deps: QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps
 QtScrcpy_autogen_timestamp_deps: QtScrcpy/CMakeFiles/QtScrcpy_autogen_timestamp_deps.dir/build.make
