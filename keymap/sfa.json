@@ -131,6 +131,27 @@
       "startDelay": 0,
       "dragSpeed": 2000,
       "switchMap": false
+    },
+    {
+      "type": "KMT_CLICK_MULTI",
+      "key": "Key_5",
+      "clickNodes": [
+        {
+          "delay": 10,
+          "pos": {
+            "x": 0.8563,
+            "y": 0.206
+          }
+        },
+        {
+          "delay": 100,
+          "pos": {
+            "x": 0.7863,
+            "y": 0.206
+          }
+        }
+      ],
+      "switchMap": false
     }
   ],
   "width": 2400,
