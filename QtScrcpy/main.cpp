@@ -25,6 +25,9 @@ QtMsgType covertLogLevel(const QString &logLevel);
 
 int main(int argc, char *argv[])
 {
+    // Fix for PulseAudio stream naming to ensure persistent volume mixer settings
+    qputenv("PULSE_PROP", "media.name=QtScrcpyAudio");
+
     // set env
 #ifdef Q_OS_WIN32
     qputenv("QTSCRCPY_ADB_PATH", "../../../QtScrcpy/QtScrcpyCore/src/third_party/adb/win/adb.exe");
