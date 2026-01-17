@@ -43,6 +43,7 @@ private slots:
     void on_volumeUpBtn_clicked();
     void on_volumeDownBtn_clicked();
     void on_volumeSlider_valueChanged(int value);
+    void on_volumeSlider_sliderReleased();
     void on_closeScreenBtn_clicked();
 
 signals:

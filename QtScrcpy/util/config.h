@@ -25,6 +25,7 @@ struct UserBootConfig
     bool showToolbar      = true;
     bool keymapOnly      = false;  // New option for keymap-only mode
     bool logToFile        = false;
+    int volume            = 50;
 };
 
 class QSettings;

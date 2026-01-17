@@ -497,6 +497,7 @@ void Dialog::onDeviceConnected(bool success, const QString &serial, const QStrin
     auto videoForm = new VideoForm(ui->framelessCheck->isChecked(), Config::getInstance().getSkin(), ui->showToolbar->isChecked());
     videoForm->setSerial(serial);
     connect(videoForm, &VideoForm::volumeChanged, &m_audioOutput, &AudioOutput::setVolume);
+    m_audioOutput.setVolume(Config::getInstance().getUserBootConfig().volume / 100.0);
 
     qsc::IDeviceManage::getInstance().getDevice(serial)->setUserData(static_cast<void*>(videoForm));
     qsc::IDeviceManage::getInstance().getDevice(serial)->registerDeviceObserver(videoForm);

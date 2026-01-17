@@ -1,4 +1,4 @@
-﻿#include <QApplication>
+#include <QApplication>
 #include <QDebug>
 #include <QFile>
 #include <QSurfaceFormat>
@@ -7,6 +7,8 @@
 #include <QTranslator>
 #include <QDateTime>
 #include <QDir>
+#include <QLockFile>
+#include <QMessageBox>
 
 #include "config.h"
 #include "dialog.h"
@@ -55,6 +57,13 @@ int main(int argc, char *argv[])
     g_oldMessageHandler = qInstallMessageHandler(myMessageOutput);
     QApplication a(argc, argv);
 
+    // Single instance check
+    QLockFile lockFile(QDir::temp().absoluteFilePath("qtscrcpy.lock"));
+    if (!lockFile.tryLock(100)) {
+        QMessageBox::warning(nullptr, "QtScrcpy", "The application is already running.");
+        return 0;
+    }
+
     if (Config::getInstance().getUserBootConfig().logToFile) {
         QString logDir = QCoreApplication::applicationDirPath() + "/logs";
         QDir dir(logDir);
@@ -69,6 +78,38 @@ int main(int argc, char *argv[])
             qWarning() << "Failed to open log file:" << fileName;
         }
     }
+
+    // set on QApplication before
+    // bug: config path is error on mac
+    int opengl = Config::getInstance().getDesktopOpenGL();
+    if (0 == opengl) {
+        QApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
+    } else if (1 == opengl) {
+        QApplication::setAttribute(Qt::AA_UseOpenGLES);
+    } else if (2 == opengl) {
+        QApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
+    }
+
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+#endif
+#endif
+
+    QSurfaceFormat varFormat = QSurfaceFormat::defaultFormat();
+    varFormat.setVersion(2, 0);
+    varFormat.setProfile(QSurfaceFormat::NoProfile);
+    /*
+    varFormat.setSamples(4);
+    varFormat.setAlphaBufferSize(8);
+    varFormat.setBlueBufferSize(8);
+    varFormat.setRedBufferSize(8);
+    varFormat.setGreenBufferSize(8);
+    varFormat.setDepthBufferSize(24);
+    */
+    QSurfaceFormat::setDefaultFormat(varFormat);
 
     // windows下通过qmake VERSION变量或者rc设置版本号和应用名称后，这里可以直接拿到
     // mac下拿到的是CFBundleVersion的值

@@ -3,6 +3,7 @@
 #include <QMouseEvent>
 #include <QShowEvent>
 
+#include "config.h"
 #include "iconhelper.h"
 #include "toolform.h"
 #include "ui_toolform.h"
@@ -14,6 +15,9 @@ ToolForm::ToolForm(QWidget *adsorbWidget, AdsorbPositions adsorbPos) : MagneticW
     ui->setupUi(this);
     setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
     //setWindowFlags(windowFlags() & ~Qt::WindowMinMaxButtonsHint);
+
+    ui->volumeSlider->setValue(Config::getInstance().getUserBootConfig().volume);
+    connect(ui->volumeSlider, &QSlider::sliderReleased, this, &ToolForm::on_volumeSlider_sliderReleased);
 
     updateGroupControl();
 
@@ -190,6 +194,13 @@ void ToolForm::on_volumeDownBtn_clicked()
 void ToolForm::on_volumeSlider_valueChanged(int value)
 {
     emit volumeChanged(value / 100.0);
+}
+
+void ToolForm::on_volumeSlider_sliderReleased()
+{
+    UserBootConfig config = Config::getInstance().getUserBootConfig();
+    config.volume = ui->volumeSlider->value();
+    Config::getInstance().setUserBootConfig(config);
 }
 
 void ToolForm::on_closeScreenBtn_clicked()

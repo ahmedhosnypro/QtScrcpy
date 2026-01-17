@@ -108,6 +108,9 @@
 #define COMMON_LOG_TO_FILE_KEY "LogToFile"
 #define COMMON_LOG_TO_FILE_DEF false
 
+#define COMMON_VOLUME_KEY "Volume"
+#define COMMON_VOLUME_DEF 50
+
 // device config
 #define SERIAL_WINDOW_RECT_KEY_X "WindowRectX"
 #define SERIAL_WINDOW_RECT_KEY_Y "WindowRectY"
@@ -184,6 +187,7 @@ void Config::setUserBootConfig(const UserBootConfig &config)
     m_userData->setValue(COMMON_SHOW_TOOLBAR_KEY, config.showToolbar);
     m_userData->setValue(COMMON_KEYMAP_ONLY_KEY, config.keymapOnly);
     m_userData->setValue(COMMON_LOG_TO_FILE_KEY, config.logToFile);
+    m_userData->setValue(COMMON_VOLUME_KEY, config.volume);
     m_userData->endGroup();
     m_userData->sync();
 }
@@ -210,6 +214,7 @@ UserBootConfig Config::getUserBootConfig()
     config.showToolbar = m_userData->value(COMMON_SHOW_TOOLBAR_KEY, COMMON_SHOW_TOOLBAR_DEF).toBool();
     config.keymapOnly = m_userData->value(COMMON_KEYMAP_ONLY_KEY, COMMON_KEYMAP_ONLY_DEF).toBool();
     config.logToFile = m_userData->value(COMMON_LOG_TO_FILE_KEY, COMMON_LOG_TO_FILE_DEF).toBool();
+    config.volume = m_userData->value(COMMON_VOLUME_KEY, COMMON_VOLUME_DEF).toInt();
     m_userData->endGroup();
     return config;
 }
