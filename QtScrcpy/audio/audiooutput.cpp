@@ -126,6 +126,9 @@ bool AudioOutput::runSndcpyProcess(const QString &serial, int port, bool wait)
 
 void AudioOutput::startAudioOutput()
 {
+    // Fix for PulseAudio: force a constant stream name so volume mixer remembers settings
+    qputenv("PULSE_PROP", "media.name=QtScrcpyAudio");
+
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     if (m_audioOutput) {
         return;
