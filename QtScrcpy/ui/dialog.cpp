@@ -171,6 +171,12 @@ void Dialog::initUI()
         connect(ui->deviceIpEdt->lineEdit(), &QWidget::customContextMenuRequested,
                 this, &Dialog::showIpEditMenu);
     }
+    
+    // Initialize volume controls (will be overridden by config)
+    ui->volumeSlider->setValue(50);
+    ui->volumeValueLabel->setText("50%");
+    m_lastVolume = 50;
+    m_isMuted = false;
 }
 
 void Dialog::updateBootConfig(bool toView)
@@ -203,6 +209,11 @@ void Dialog::updateBootConfig(bool toView)
         ui->useSingleModeCheck->setChecked(config.simpleMode);
         ui->autoUpdatecheckBox->setChecked(config.autoUpdateDevice);
         ui->showToolbar->setChecked(config.showToolbar);
+        
+        // Load volume setting
+        ui->volumeSlider->setValue(config.volume);
+        ui->volumeValueLabel->setText(QString("%1%").arg(config.volume));
+        m_lastVolume = config.volume;
 
         // Load keymap-only mode setting
         QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
@@ -229,6 +240,9 @@ void Dialog::updateBootConfig(bool toView)
         config.simpleMode = ui->useSingleModeCheck->isChecked();
         config.autoUpdateDevice = ui->autoUpdatecheckBox->isChecked();
         config.showToolbar = ui->showToolbar->isChecked();
+        
+        // Save volume setting
+        config.volume = ui->volumeSlider->value();
 
         // Save keymap-only mode setting
         QCheckBox* keymapOnlyBox = findChild<QCheckBox*>("keymapOnlyCheck");
@@ -798,6 +812,41 @@ void Dialog::on_startAudioBtn_clicked()
 void Dialog::on_stopAudioBtn_clicked()
 {
     m_audioOutput.stop();
+}
+
+void Dialog::on_volumeSlider_valueChanged(int value)
+{
+    // Use logarithmic scale for more aggressive volume reduction
+    qreal volume = (value * value) / 10000.0; // Square the value and normalize
+    m_audioOutput.setVolume(volume);
+    ui->volumeValueLabel->setText(QString("%1%").arg(value));
+    
+    if (!m_isMuted) {
+        m_lastVolume = value;
+    }
+    
+    qInfo() << "Volume changed to:" << value << "% (actual:" << volume << ")";
+}
+
+void Dialog::on_muteBtn_toggled(bool checked)
+{
+    m_isMuted = checked;
+    
+    if (checked) {
+        // Mute: save current volume and set to 0
+        m_lastVolume = ui->volumeSlider->value();
+        m_audioOutput.setVolume(0.0);
+        ui->muteBtn->setText("Unmute");
+        ui->volumeSlider->setEnabled(false);
+        qInfo() << "Audio muted";
+    } else {
+        // Unmute: restore previous volume
+        m_audioOutput.setVolume(m_lastVolume / 100.0);
+        ui->muteBtn->setText("Mute");
+        ui->volumeSlider->setEnabled(true);
+        ui->volumeSlider->setValue(m_lastVolume);
+        qInfo() << "Audio unmuted, volume restored to:" << m_lastVolume << "%";
+    }
 }
 
 void Dialog::on_installSndcpyBtn_clicked()

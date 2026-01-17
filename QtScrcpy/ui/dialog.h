@@ -63,6 +63,9 @@ private slots:
 
     void on_stopAudioBtn_clicked();
 
+    void on_volumeSlider_valueChanged(int value);
+    void on_muteBtn_toggled(bool checked);
+
     void on_installSndcpyBtn_clicked();
 
     void on_autoUpdatecheckBox_toggled(bool checked);
@@ -95,6 +98,8 @@ private:
     QAction *m_quit;
     AudioOutput m_audioOutput;
     QTimer m_autoUpdatetimer;
+    bool m_isMuted = false;
+    int m_lastVolume = 50;
 };
 
 #endif // DIALOG_H

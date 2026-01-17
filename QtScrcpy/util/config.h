@@ -23,7 +23,7 @@ struct UserBootConfig
     bool simpleMode       = false;
     bool autoUpdateDevice = true;
     bool showToolbar      = true;
-    bool keymapOnly      = false;  // New option for keymap-only mode
+    bool keymapOnly       = false;
     bool logToFile        = false;
     int volume            = 50;
 };
