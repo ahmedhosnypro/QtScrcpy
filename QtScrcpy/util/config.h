@@ -24,6 +24,7 @@ struct UserBootConfig
     bool autoUpdateDevice = true;
     bool showToolbar      = true;
     bool keymapOnly      = false;  // New option for keymap-only mode
+    bool logToFile        = false;
 };
 
 class QSettings;

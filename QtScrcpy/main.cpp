@@ -5,6 +5,8 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QTranslator>
+#include <QDateTime>
+#include <QDir>
 
 #include "config.h"
 #include "dialog.h"
@@ -12,6 +14,7 @@
 
 static Dialog *g_mainDlg = Q_NULLPTR;
 static QtMessageHandler g_oldMessageHandler = Q_NULLPTR;
+static QFile *g_logFile = Q_NULLPTR;
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 void installTranslator();
 
@@ -49,40 +52,23 @@ int main(int argc, char *argv[])
 
     g_msgType = covertLogLevel(Config::getInstance().getLogLevel());
 
-    // set on QApplication before
-    // bug: config path is error on mac
-    int opengl = Config::getInstance().getDesktopOpenGL();
-    if (0 == opengl) {
-        QApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
-    } else if (1 == opengl) {
-        QApplication::setAttribute(Qt::AA_UseOpenGLES);
-    } else if (2 == opengl) {
-        QApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
-    }
-
-#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-#endif
-#endif
-
-    QSurfaceFormat varFormat = QSurfaceFormat::defaultFormat();
-    varFormat.setVersion(2, 0);
-    varFormat.setProfile(QSurfaceFormat::NoProfile);
-    /*
-    varFormat.setSamples(4);
-    varFormat.setAlphaBufferSize(8);
-    varFormat.setBlueBufferSize(8);
-    varFormat.setRedBufferSize(8);
-    varFormat.setGreenBufferSize(8);
-    varFormat.setDepthBufferSize(24);
-    */
-    QSurfaceFormat::setDefaultFormat(varFormat);
-
     g_oldMessageHandler = qInstallMessageHandler(myMessageOutput);
     QApplication a(argc, argv);
+
+    if (Config::getInstance().getUserBootConfig().logToFile) {
+        QString logDir = QCoreApplication::applicationDirPath() + "/logs";
+        QDir dir(logDir);
+        if (!dir.exists()) {
+            dir.mkpath(logDir);
+        }
+        QString fileName = QString("error-%1.log").arg(QDateTime::currentDateTime().toString("yyyyMMdd-HHmmss"));
+        g_logFile = new QFile(logDir + "/" + fileName);
+        if (!g_logFile->open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
+            delete g_logFile;
+            g_logFile = Q_NULLPTR;
+            qWarning() << "Failed to open log file:" << fileName;
+        }
+    }
 
     // windows下通过qmake VERSION变量或者rc设置版本号和应用名称后，这里可以直接拿到
     // mac下拿到的是CFBundleVersion的值
@@ -134,6 +120,9 @@ int main(int argc, char *argv[])
 #if defined(Q_OS_WIN32) || defined(Q_OS_OSX)
     MouseTap::getInstance()->quitMouseEventTap();
 #endif
+    if (g_logFile) {
+        delete g_logFile;
+    }
     return ret;
 }
 
@@ -196,6 +185,18 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 {
     if (g_oldMessageHandler) {
         g_oldMessageHandler(type, context, msg);
+    }
+
+    if (g_logFile && (QtCriticalMsg == type || QtFatalMsg == type)) {
+        QTextStream out(g_logFile);
+        out << QDateTime::currentDateTime().toString("[yyyy-MM-dd HH:mm:ss] ");
+        switch (type) {
+        case QtCriticalMsg: out << "Critical: "; break;
+        case QtFatalMsg:    out << "Fatal: "; break;
+        default:            break;
+        }
+        out << msg << "\n";
+        out.flush();
     }
 
     // Is Qt log level higher than warning?

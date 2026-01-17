@@ -105,6 +105,9 @@
 #define COMMON_KEYMAP_ONLY_KEY "KeymapOnly"
 #define COMMON_KEYMAP_ONLY_DEF false
 
+#define COMMON_LOG_TO_FILE_KEY "LogToFile"
+#define COMMON_LOG_TO_FILE_DEF false
+
 // device config
 #define SERIAL_WINDOW_RECT_KEY_X "WindowRectX"
 #define SERIAL_WINDOW_RECT_KEY_Y "WindowRectY"
@@ -180,6 +183,7 @@ void Config::setUserBootConfig(const UserBootConfig &config)
     m_userData->setValue(COMMON_AUTO_UPDATE_DEVICE_KEY, config.autoUpdateDevice);
     m_userData->setValue(COMMON_SHOW_TOOLBAR_KEY, config.showToolbar);
     m_userData->setValue(COMMON_KEYMAP_ONLY_KEY, config.keymapOnly);
+    m_userData->setValue(COMMON_LOG_TO_FILE_KEY, config.logToFile);
     m_userData->endGroup();
     m_userData->sync();
 }
@@ -205,6 +209,7 @@ UserBootConfig Config::getUserBootConfig()
     config.autoUpdateDevice = m_userData->value(COMMON_AUTO_UPDATE_DEVICE_KEY, COMMON_AUTO_UPDATE_DEVICE_DEF).toBool();
     config.showToolbar = m_userData->value(COMMON_SHOW_TOOLBAR_KEY, COMMON_SHOW_TOOLBAR_DEF).toBool();
     config.keymapOnly = m_userData->value(COMMON_KEYMAP_ONLY_KEY, COMMON_KEYMAP_ONLY_DEF).toBool();
+    config.logToFile = m_userData->value(COMMON_LOG_TO_FILE_KEY, COMMON_LOG_TO_FILE_DEF).toBool();
     m_userData->endGroup();
     return config;
 }
