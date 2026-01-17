@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -32,6 +33,7 @@ public:
     QPushButton *powerBtn;
     QPushButton *volumeUpBtn;
     QPushButton *volumeDownBtn;
+    QSlider *volumeSlider;
     QPushButton *appSwitchBtn;
     QPushButton *menuBtn;
     QPushButton *homeBtn;
@@ -95,6 +97,15 @@ public:
         volumeDownBtn->setObjectName("volumeDownBtn");
 
         verticalLayout->addWidget(volumeDownBtn);
+
+        volumeSlider = new QSlider(ToolForm);
+        volumeSlider->setObjectName("volumeSlider");
+        volumeSlider->setMinimum(0);
+        volumeSlider->setMaximum(100);
+        volumeSlider->setValue(50);
+        volumeSlider->setOrientation(Qt::Horizontal);
+
+        verticalLayout->addWidget(volumeSlider);
 
         appSwitchBtn = new QPushButton(ToolForm);
         appSwitchBtn->setObjectName("appSwitchBtn");
@@ -166,6 +177,9 @@ public:
         volumeDownBtn->setToolTip(QCoreApplication::translate("ToolForm", "volume down", nullptr));
 #endif // QT_CONFIG(tooltip)
         volumeDownBtn->setText(QString());
+#if QT_CONFIG(tooltip)
+        volumeSlider->setToolTip(QCoreApplication::translate("ToolForm", "Audio Volume", nullptr));
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         appSwitchBtn->setToolTip(QCoreApplication::translate("ToolForm", "app switch", nullptr));
 #endif // QT_CONFIG(tooltip)

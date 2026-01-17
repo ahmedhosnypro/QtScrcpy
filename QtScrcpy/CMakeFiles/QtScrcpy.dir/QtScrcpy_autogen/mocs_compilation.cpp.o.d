@@ -314,6 +314,11 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/QtScrcpy_autogen/mocs_compilation.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qsharedpointer_impl.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QVector \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QAtomicInt \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutex \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
  /home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpy_autogen/7WSARK52GL/moc_groupcontroller.cpp \
  /home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpy_autogen/7WSARK52GL/../../groupcontroller/groupcontroller.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \

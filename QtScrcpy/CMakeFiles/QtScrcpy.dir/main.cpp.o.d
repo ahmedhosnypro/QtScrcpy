@@ -383,6 +383,14 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtNetwork/qtcpsocket.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QTranslator \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtranslator.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QDateTime \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
  /home/pc/Projects/QtScrcpy/QtScrcpy/util/config.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
@@ -471,4 +479,9 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QVector \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QAtomicInt \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutex \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
  /home/pc/Projects/QtScrcpy/QtScrcpy/util/mousetap/mousetap.h

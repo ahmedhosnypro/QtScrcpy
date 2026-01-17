@@ -484,6 +484,11 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/videoform.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QVector \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QAtomicInt \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutex \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
  /home/pc/Projects/QtScrcpy/QtScrcpy/fontawesome/iconhelper.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
@@ -497,9 +502,6 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/videoform.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/QFontDatabase \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qfontdatabase.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutex \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \

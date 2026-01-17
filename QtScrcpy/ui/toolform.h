@@ -42,7 +42,13 @@ private slots:
     void on_screenShotBtn_clicked();
     void on_volumeUpBtn_clicked();
     void on_volumeDownBtn_clicked();
+    void on_volumeSlider_valueChanged(int value);
     void on_closeScreenBtn_clicked();
+
+signals:
+    void volumeChanged(qreal volume);
+
+private slots:
     void on_expandNotifyBtn_clicked();
     void on_touchBtn_clicked();
     void on_groupControlBtn_clicked();

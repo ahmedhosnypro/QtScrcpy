@@ -37,6 +37,9 @@ public:
     // Add flag to control video rendering
     bool keymap_only = false;
 
+signals:
+    void volumeChanged(qreal volume);
+
 private:
     void onFrame(int width, int height, uint8_t* dataY, uint8_t* dataU, uint8_t* dataV,
                  int linesizeY, int linesizeU, int linesizeV) override;

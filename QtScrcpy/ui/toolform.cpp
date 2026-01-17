@@ -187,6 +187,11 @@ void ToolForm::on_volumeDownBtn_clicked()
     device->postVolumeDown();
 }
 
+void ToolForm::on_volumeSlider_valueChanged(int value)
+{
+    emit volumeChanged(value / 100.0);
+}
+
 void ToolForm::on_closeScreenBtn_clicked()
 {
     auto device = qsc::IDeviceManage::getInstance().getDevice(m_serial);

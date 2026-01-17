@@ -466,6 +466,11 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/dialog.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QVector \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvector.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QAtomicInt \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutex \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
  /home/pc/Projects/QtScrcpy/QtScrcpy/QtScrcpy_autogen/include/ui_dialog.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
