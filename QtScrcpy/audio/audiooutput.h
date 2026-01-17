@@ -5,6 +5,8 @@
 #include <QProcess>
 #include <QPointer>
 #include <QVector>
+#include <QAtomicInt>
+#include <QMutex>
 
 class QAudioSink;
 class QAudioOutput;
@@ -19,6 +21,7 @@ public:
     bool start(const QString& serial, int port);
     void stop();
     void installonly(const QString& serial, int port);
+    void setVolume(qreal volume);
 
 private:
     bool runSndcpyProcess(const QString& serial, int port, bool wait = true);
@@ -26,6 +29,8 @@ private:
     void stopAudioOutput();
     void startRecvData(int port);
     void stopRecvData();
+    void handleFailure();
+    void restartAudio();
 
 signals:
     void connectTo(int port);
@@ -36,6 +41,11 @@ private:
     QProcess m_sndcpy;
     QVector<char> m_buffer;
     bool m_running = false;
+    QAtomicInt m_failureCount{0};
+    QMutex m_restartMutex;
+    bool m_isRestarting = false;
+    QString m_lastSerial;
+    int m_lastPort = 0;
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QAudioOutput* m_audioOutput = nullptr;
 #else
