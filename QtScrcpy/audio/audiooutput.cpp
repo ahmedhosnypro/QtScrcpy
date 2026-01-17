@@ -4,6 +4,7 @@
 #include <QTime>
 #include <QElapsedTimer>
 #include <QMutexLocker>
+#include <QCoreApplication>
 
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
 #include <QAudioSink>
@@ -18,6 +19,15 @@ AudioOutput::AudioOutput(QObject *parent)
 {
     m_running = false;
     m_isRestarting = false;
+    
+    // Set Qt application properties for PulseAudio
+    QCoreApplication::setApplicationName("QtScrcpy");
+    QCoreApplication::setOrganizationName("QtScrcpy");
+    
+    qInfo() << "AudioOutput::Constructor - Application properties set:";
+    qInfo() << "  ApplicationName:" << QCoreApplication::applicationName();
+    qInfo() << "  OrganizationName:" << QCoreApplication::organizationName();
+    
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     m_audioOutput = nullptr;
 #else
@@ -126,11 +136,13 @@ bool AudioOutput::runSndcpyProcess(const QString &serial, int port, bool wait)
 
 void AudioOutput::startAudioOutput()
 {
-    // Fix for PulseAudio: force a constant stream name so volume mixer remembers settings
-    qputenv("PULSE_PROP", "media.name=QtScrcpyAudio");
-
+    qInfo() << "AudioOutput::startAudioOutput() - Creating audio device";
+    qInfo() << "  Current PID:" << QCoreApplication::applicationPid();
+    qInfo() << "  Object address:" << (void*)this;
+    
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     if (m_audioOutput) {
+        qInfo() << "AudioOutput::startAudioOutput() - Audio output already exists";
         return;
     }
 
@@ -149,7 +161,12 @@ void AudioOutput::startAudioOutput()
         return;
     }
 
+    qInfo() << "AudioOutput::Creating QAudioOutput with format:" << format;
     m_audioOutput = new QAudioOutput(format, this);
+    m_audioOutput->setObjectName("QtScrcpy");
+    qInfo() << "AudioOutput::QAudioOutput created - ObjectName:" << m_audioOutput->objectName();
+    qInfo() << "AudioOutput::QAudioOutput address:" << (void*)m_audioOutput;
+    
     connect(m_audioOutput, &QAudioOutput::stateChanged, this, [this](QAudio::State state) {
         qInfo() << "AudioOutput::audio state changed:" << state;
         if (state == QAudio::StoppedState && m_running) {
@@ -157,9 +174,12 @@ void AudioOutput::startAudioOutput()
         }
     });
     m_audioOutput->setBufferSize(48000*2*15/1000 * 20);
+    qInfo() << "AudioOutput::Starting audio output device...";
     m_outputDevice = m_audioOutput->start();
+    qInfo() << "AudioOutput::Audio output device started:" << (void*)m_outputDevice;
 #else
     if (m_audioSink) {
+        qInfo() << "AudioOutput::startAudioOutput() - Audio sink already exists";
         return;
     }
 
@@ -173,8 +193,17 @@ void AudioOutput::startAudioOutput()
         handleFailure();
         return;
     }
+    
+    qInfo() << "AudioOutput::Creating QAudioSink with format:" << format;
     m_audioSink = new QAudioSink(defaultDevice, format, this);
+    m_audioSink->setObjectName("QtScrcpy");
+    qInfo() << "AudioOutput::QAudioSink created - ObjectName:" << m_audioSink->objectName();
+    qInfo() << "AudioOutput::QAudioSink address:" << (void*)m_audioSink;
+    
+    qInfo() << "AudioOutput::Starting audio sink device...";
     m_outputDevice = m_audioSink->start();
+    qInfo() << "AudioOutput::Audio sink device started:" << (void*)m_outputDevice;
+    
     if (!m_outputDevice) {
         qWarning() << "AudioOutput::audio output device not available, cannot play audio.";
         delete m_audioSink;
@@ -187,20 +216,26 @@ void AudioOutput::startAudioOutput()
 
 void AudioOutput::stopAudioOutput()
 {
+    qInfo() << "AudioOutput::stopAudioOutput() - Stopping audio device";
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     if (m_audioOutput) {
+        qInfo() << "AudioOutput::Stopping QAudioOutput:" << (void*)m_audioOutput;
         m_audioOutput->stop();
         delete m_audioOutput;
         m_audioOutput = nullptr;
+        qInfo() << "AudioOutput::QAudioOutput deleted";
     }
 #else
     if (m_audioSink) {
+        qInfo() << "AudioOutput::Stopping QAudioSink:" << (void*)m_audioSink;
         m_audioSink->stop();
         delete m_audioSink;
         m_audioSink = nullptr;
+        qInfo() << "AudioOutput::QAudioSink deleted";
     }
 #endif
     m_outputDevice = nullptr;
+    qInfo() << "AudioOutput::stopAudioOutput() - Complete";
 }
 
 void AudioOutput::startRecvData(int port)
