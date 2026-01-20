@@ -337,6 +337,13 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/audio/audiooutput.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutexLocker \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
  /usr/include/x86_64-linux-gnu/qt6/QtMultimedia/QAudioSink \
  /usr/include/x86_64-linux-gnu/qt6/QtMultimedia/qaudiosink.h \
  /usr/include/x86_64-linux-gnu/qt6/QtMultimedia/qaudioformat.h \

@@ -44,6 +44,9 @@ VideoForm::VideoForm(bool framelessWindow, bool skin, bool showToolbar, QWidget 
 
 VideoForm::~VideoForm()
 {
+    // Ensure mouse cursor is released when VideoForm is destroyed
+    MouseTap::getInstance()->enableMouseEventTap(QRect(), false);
+    QGuiApplication::restoreOverrideCursor();
     delete ui;
 }
 

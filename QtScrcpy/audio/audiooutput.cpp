@@ -93,6 +93,7 @@ void AudioOutput::installonly(const QString &serial, int port)
 
 void AudioOutput::setVolume(qreal volume)
 {
+    m_pendingVolume = volume;
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     if (m_audioOutput) {
         m_audioOutput->setVolume(volume);
@@ -177,6 +178,12 @@ void AudioOutput::startAudioOutput()
     qInfo() << "AudioOutput::Starting audio output device...";
     m_outputDevice = m_audioOutput->start();
     qInfo() << "AudioOutput::Audio output device started:" << (void*)m_outputDevice;
+    
+    // Apply pending volume if it was set before audio device was created
+    if (m_pendingVolume >= 0.0) {
+        m_audioOutput->setVolume(m_pendingVolume);
+        qInfo() << "AudioOutput::Applied pending volume:" << m_pendingVolume;
+    }
 #else
     if (m_audioSink) {
         qInfo() << "AudioOutput::startAudioOutput() - Audio sink already exists";
@@ -210,6 +217,12 @@ void AudioOutput::startAudioOutput()
         m_audioSink = nullptr;
         handleFailure();
         return;
+    }
+    
+    // Apply pending volume if it was set before audio device was created
+    if (m_pendingVolume >= 0.0) {
+        m_audioSink->setVolume(m_pendingVolume);
+        qInfo() << "AudioOutput::Applied pending volume:" << m_pendingVolume;
     }
 #endif
 }

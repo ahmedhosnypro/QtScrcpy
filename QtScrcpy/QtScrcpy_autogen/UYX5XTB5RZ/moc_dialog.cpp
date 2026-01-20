@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_Dialog_t {
-    uint offsetsAndSizes[80];
+    uint offsetsAndSizes[86];
     char stringdata0[7];
     char stringdata1[18];
     char stringdata2[1];
@@ -63,10 +63,13 @@ struct qt_meta_stringdata_Dialog_t {
     char stringdata33[33];
     char stringdata34[25];
     char stringdata35[24];
-    char stringdata36[28];
-    char stringdata37[30];
-    char stringdata38[15];
-    char stringdata39[4];
+    char stringdata36[29];
+    char stringdata37[6];
+    char stringdata38[19];
+    char stringdata39[28];
+    char stringdata40[30];
+    char stringdata41[15];
+    char stringdata42[4];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_Dialog_t::offsetsAndSizes) + ofs), len 
@@ -108,10 +111,13 @@ Q_CONSTINIT static const qt_meta_stringdata_Dialog_t qt_meta_stringdata_Dialog =
         QT_MOC_LITERAL(683, 32),  // "on_serialBox_currentIndexChanged"
         QT_MOC_LITERAL(716, 24),  // "on_startAudioBtn_clicked"
         QT_MOC_LITERAL(741, 23),  // "on_stopAudioBtn_clicked"
-        QT_MOC_LITERAL(765, 27),  // "on_installSndcpyBtn_clicked"
-        QT_MOC_LITERAL(793, 29),  // "on_autoUpdatecheckBox_toggled"
-        QT_MOC_LITERAL(823, 14),  // "showIpEditMenu"
-        QT_MOC_LITERAL(838, 3)   // "pos"
+        QT_MOC_LITERAL(765, 28),  // "on_volumeSlider_valueChanged"
+        QT_MOC_LITERAL(794, 5),  // "value"
+        QT_MOC_LITERAL(800, 18),  // "on_muteBtn_toggled"
+        QT_MOC_LITERAL(819, 27),  // "on_installSndcpyBtn_clicked"
+        QT_MOC_LITERAL(847, 29),  // "on_autoUpdatecheckBox_toggled"
+        QT_MOC_LITERAL(877, 14),  // "showIpEditMenu"
+        QT_MOC_LITERAL(892, 3)   // "pos"
     },
     "Dialog",
     "onDeviceConnected",
@@ -149,6 +155,9 @@ Q_CONSTINIT static const qt_meta_stringdata_Dialog_t qt_meta_stringdata_Dialog =
     "on_serialBox_currentIndexChanged",
     "on_startAudioBtn_clicked",
     "on_stopAudioBtn_clicked",
+    "on_volumeSlider_valueChanged",
+    "value",
+    "on_muteBtn_toggled",
     "on_installSndcpyBtn_clicked",
     "on_autoUpdatecheckBox_toggled",
     "showIpEditMenu",
@@ -163,7 +172,7 @@ Q_CONSTINIT static const uint qt_meta_data_Dialog[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      29,   14, // methods
+      31,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -171,35 +180,37 @@ Q_CONSTINIT static const uint qt_meta_data_Dialog[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    4,  188,    2, 0x08,    1 /* Private */,
-       7,    1,  197,    2, 0x08,    6 /* Private */,
-       8,    0,  200,    2, 0x08,    8 /* Private */,
-       9,    0,  201,    2, 0x08,    9 /* Private */,
-      10,    0,  202,    2, 0x08,   10 /* Private */,
-      11,    0,  203,    2, 0x08,   11 /* Private */,
-      12,    0,  204,    2, 0x08,   12 /* Private */,
-      13,    0,  205,    2, 0x08,   13 /* Private */,
-      14,    0,  206,    2, 0x08,   14 /* Private */,
-      15,    0,  207,    2, 0x08,   15 /* Private */,
-      16,    1,  208,    2, 0x08,   16 /* Private */,
-      18,    0,  211,    2, 0x08,   18 /* Private */,
-      19,    0,  212,    2, 0x08,   19 /* Private */,
-      20,    0,  213,    2, 0x08,   20 /* Private */,
-      21,    0,  214,    2, 0x08,   21 /* Private */,
-      22,    0,  215,    2, 0x08,   22 /* Private */,
-      23,    0,  216,    2, 0x08,   23 /* Private */,
-      24,    1,  217,    2, 0x08,   24 /* Private */,
-      26,    0,  220,    2, 0x08,   26 /* Private */,
-      27,    0,  221,    2, 0x08,   27 /* Private */,
-      28,    1,  222,    2, 0x08,   28 /* Private */,
-      31,    0,  225,    2, 0x08,   30 /* Private */,
-      32,    0,  226,    2, 0x08,   31 /* Private */,
-      33,    1,  227,    2, 0x08,   32 /* Private */,
-      34,    0,  230,    2, 0x08,   34 /* Private */,
-      35,    0,  231,    2, 0x08,   35 /* Private */,
-      36,    0,  232,    2, 0x08,   36 /* Private */,
-      37,    1,  233,    2, 0x08,   37 /* Private */,
-      38,    1,  236,    2, 0x08,   39 /* Private */,
+       1,    4,  200,    2, 0x08,    1 /* Private */,
+       7,    1,  209,    2, 0x08,    6 /* Private */,
+       8,    0,  212,    2, 0x08,    8 /* Private */,
+       9,    0,  213,    2, 0x08,    9 /* Private */,
+      10,    0,  214,    2, 0x08,   10 /* Private */,
+      11,    0,  215,    2, 0x08,   11 /* Private */,
+      12,    0,  216,    2, 0x08,   12 /* Private */,
+      13,    0,  217,    2, 0x08,   13 /* Private */,
+      14,    0,  218,    2, 0x08,   14 /* Private */,
+      15,    0,  219,    2, 0x08,   15 /* Private */,
+      16,    1,  220,    2, 0x08,   16 /* Private */,
+      18,    0,  223,    2, 0x08,   18 /* Private */,
+      19,    0,  224,    2, 0x08,   19 /* Private */,
+      20,    0,  225,    2, 0x08,   20 /* Private */,
+      21,    0,  226,    2, 0x08,   21 /* Private */,
+      22,    0,  227,    2, 0x08,   22 /* Private */,
+      23,    0,  228,    2, 0x08,   23 /* Private */,
+      24,    1,  229,    2, 0x08,   24 /* Private */,
+      26,    0,  232,    2, 0x08,   26 /* Private */,
+      27,    0,  233,    2, 0x08,   27 /* Private */,
+      28,    1,  234,    2, 0x08,   28 /* Private */,
+      31,    0,  237,    2, 0x08,   30 /* Private */,
+      32,    0,  238,    2, 0x08,   31 /* Private */,
+      33,    1,  239,    2, 0x08,   32 /* Private */,
+      34,    0,  242,    2, 0x08,   34 /* Private */,
+      35,    0,  243,    2, 0x08,   35 /* Private */,
+      36,    1,  244,    2, 0x08,   36 /* Private */,
+      38,    1,  247,    2, 0x08,   38 /* Private */,
+      39,    0,  250,    2, 0x08,   40 /* Private */,
+      40,    1,  251,    2, 0x08,   41 /* Private */,
+      41,    1,  254,    2, 0x08,   43 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool, QMetaType::QString, QMetaType::QString, QMetaType::QSize,    3,    4,    5,    6,
@@ -228,9 +239,11 @@ Q_CONSTINIT static const uint qt_meta_data_Dialog[] = {
     QMetaType::Void, QMetaType::QString,   17,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   37,
+    QMetaType::Void, QMetaType::Bool,   25,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   25,
-    QMetaType::Void, QMetaType::QPoint,   39,
+    QMetaType::Void, QMetaType::QPoint,   42,
 
        0        // eod
 };
@@ -305,6 +318,12 @@ Q_CONSTINIT const QMetaObject Dialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_stopAudioBtn_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_volumeSlider_valueChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'on_muteBtn_toggled'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         // method 'on_installSndcpyBtn_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_autoUpdatecheckBox_toggled'
@@ -349,9 +368,11 @@ void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 23: _t->on_serialBox_currentIndexChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 24: _t->on_startAudioBtn_clicked(); break;
         case 25: _t->on_stopAudioBtn_clicked(); break;
-        case 26: _t->on_installSndcpyBtn_clicked(); break;
-        case 27: _t->on_autoUpdatecheckBox_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 28: _t->showIpEditMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 26: _t->on_volumeSlider_valueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 27: _t->on_muteBtn_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 28: _t->on_installSndcpyBtn_clicked(); break;
+        case 29: _t->on_autoUpdatecheckBox_toggled((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 30: _t->showIpEditMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
         default: ;
         }
     }
@@ -376,13 +397,13 @@ int Dialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 29)
+        if (_id < 31)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 31;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 29)
+        if (_id < 31)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 29;
+        _id -= 31;
     }
     return _id;
 }

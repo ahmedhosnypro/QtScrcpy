@@ -811,6 +811,7 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/audio/audiooutput.cpp.o: QtScrcpy/audio/audioou
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QAtomicInt \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QElapsedTimer \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutex \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QMutexLocker \
@@ -842,11 +843,15 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/audio/audiooutput.cpp.o: QtScrcpy/audio/audioou
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerinfo.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qcontiguouscache.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdeadlinetimer.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
@@ -867,6 +872,7 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/audio/audiooutput.cpp.o: QtScrcpy/audio/audioou
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject_impl.h \
@@ -3302,6 +3308,7 @@ QtScrcpy/CMakeFiles/QtScrcpy.dir/ui/dialog.cpp.o: QtScrcpy/ui/dialog.cpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenu \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMessageBox \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSlider \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpacerItem \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSystemTrayIcon \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTextEdit \
@@ -6429,8 +6436,6 @@ QtScrcpy/QtScrcpy_autogen/include/ui_videoform.h:
 
 QtScrcpy/ui/videoform.cpp:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSlider:
-
 /usr/include/x86_64-linux-gnu/qt6/QtGui/QShowEvent:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/QHideEvent:
@@ -6459,6 +6464,8 @@ QtScrcpy/ui/toolform.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpacerItem:
 
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSlider:
+
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout:
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGroupBox:
@@ -6480,8 +6487,6 @@ QtScrcpy/QtScrcpy_autogen/include/ui_dialog.h:
 /usr/include/x86_64-linux-gnu/qt6/QtOpenGL/qopengltexture.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QScopedPointer:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication:
 
 QtScrcpy/render/qyuvopenglwidget.cpp:
 
@@ -6569,13 +6574,13 @@ QtScrcpy/groupcontroller/groupcontroller.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/QFontDatabase:
 
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h:
-
 QtScrcpy/fontawesome/iconhelper.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtNetwork/qtnetwork-config.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qabstractsocket.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtNetwork/QTcpSocket:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qopenglcontext_platform.h:
 
@@ -6655,6 +6660,10 @@ QtScrcpy/audio/audiooutput.h:
 
 /usr/include/pthread.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qhostaddress.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
 /usr/include/stdint.h:
 
 /usr/include/endian.h:
@@ -6698,10 +6707,6 @@ QtScrcpy/audio/audiooutput.h:
 /usr/include/c++/13/tr1/bessel_function.tcc:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qhostaddress.h:
 
 /usr/include/c++/13/tr1/exp_integral.tcc:
 
@@ -6785,8 +6790,6 @@ QtScrcpy/uibase/keepratiowidget.h:
 
 /usr/include/c++/13/bits/chrono.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtNetwork/QTcpSocket:
-
 /usr/include/c++/13/atomic:
 
 /usr/include/c++/13/bits/streambuf.tcc:
@@ -6830,6 +6833,10 @@ QtScrcpy/uibase/keepratiowidget.h:
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qscopeguard.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtNetwork/QHostAddress:
+
+/usr/include/c++/13/bits/unique_lock.h:
 
 /usr/include/c++/13/array:
 
@@ -6875,8 +6882,6 @@ QtScrcpy/QtScrcpy_autogen/PZONOMFGYT/moc_audiooutput.cpp:
 
 /usr/include/alloca.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtNetwork/qabstractsocket.h:
-
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
 QtScrcpy/QtScrcpy_autogen/UYX5XTB5RZ/moc_toolform.cpp:
@@ -6890,10 +6895,6 @@ QtScrcpy/QtScrcpy_autogen/UYX5XTB5RZ/moc_toolform.cpp:
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication:
 
 /usr/include/x86_64-linux-gnu/qt6/QtMultimedia/qaudioformat.h:
-
-/usr/include/c++/13/bits/unique_lock.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtNetwork/QHostAddress:
 
 /usr/include/c++/13/tr1/riemann_zeta.tcc:
 
@@ -7493,6 +7494,8 @@ QtScrcpy/QtScrcpyCore/include/QtScrcpyCore.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qmargins.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication:
+
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qmath.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs.h:
@@ -7748,6 +7751,10 @@ QtScrcpy/main.cpp:
 /usr/include/c++/13/tr1/beta_function.tcc:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
 

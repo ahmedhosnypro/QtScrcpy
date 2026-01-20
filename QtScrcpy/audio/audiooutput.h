@@ -46,6 +46,7 @@ private:
     bool m_isRestarting = false;
     QString m_lastSerial;
     int m_lastPort = 0;
+    qreal m_pendingVolume = -1.0; // -1 means not set yet
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QAudioOutput* m_audioOutput = nullptr;
 #else

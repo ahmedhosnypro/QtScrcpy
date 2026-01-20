@@ -20,6 +20,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
@@ -113,6 +114,12 @@ public:
     QPushButton *installSndcpyBtn;
     QPushButton *startAudioBtn;
     QPushButton *stopAudioBtn;
+    QGroupBox *volumeGroupBox;
+    QHBoxLayout *volumeLayout;
+    QLabel *volumeLabel;
+    QSlider *volumeSlider;
+    QLabel *volumeValueLabel;
+    QPushButton *muteBtn;
     QGroupBox *wirelessGroupBox;
     QHBoxLayout *horizontalLayout;
     QComboBox *deviceIpEdt;
@@ -701,6 +708,53 @@ public:
 
         verticalLayout_6->addWidget(usbGroupBox);
 
+        volumeGroupBox = new QGroupBox(rightWidget);
+        volumeGroupBox->setObjectName("volumeGroupBox");
+        sizePolicy.setHeightForWidth(volumeGroupBox->sizePolicy().hasHeightForWidth());
+        volumeGroupBox->setSizePolicy(sizePolicy);
+        volumeLayout = new QHBoxLayout(volumeGroupBox);
+        volumeLayout->setSpacing(5);
+        volumeLayout->setContentsMargins(11, 11, 11, 11);
+        volumeLayout->setObjectName("volumeLayout");
+        volumeLayout->setContentsMargins(5, 5, 5, 5);
+        volumeLabel = new QLabel(volumeGroupBox);
+        volumeLabel->setObjectName("volumeLabel");
+
+        volumeLayout->addWidget(volumeLabel);
+
+        volumeSlider = new QSlider(volumeGroupBox);
+        volumeSlider->setObjectName("volumeSlider");
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(volumeSlider->sizePolicy().hasHeightForWidth());
+        volumeSlider->setSizePolicy(sizePolicy4);
+        volumeSlider->setMinimum(0);
+        volumeSlider->setMaximum(100);
+        volumeSlider->setValue(50);
+        volumeSlider->setOrientation(Qt::Horizontal);
+
+        volumeLayout->addWidget(volumeSlider);
+
+        volumeValueLabel = new QLabel(volumeGroupBox);
+        volumeValueLabel->setObjectName("volumeValueLabel");
+        sizePolicy2.setHeightForWidth(volumeValueLabel->sizePolicy().hasHeightForWidth());
+        volumeValueLabel->setSizePolicy(sizePolicy2);
+        volumeValueLabel->setMinimumSize(QSize(30, 0));
+
+        volumeLayout->addWidget(volumeValueLabel);
+
+        muteBtn = new QPushButton(volumeGroupBox);
+        muteBtn->setObjectName("muteBtn");
+        sizePolicy2.setHeightForWidth(muteBtn->sizePolicy().hasHeightForWidth());
+        muteBtn->setSizePolicy(sizePolicy2);
+        muteBtn->setCheckable(true);
+
+        volumeLayout->addWidget(muteBtn);
+
+
+        verticalLayout_6->addWidget(volumeGroupBox);
+
         wirelessGroupBox = new QGroupBox(rightWidget);
         wirelessGroupBox->setObjectName("wirelessGroupBox");
         sizePolicy.setHeightForWidth(wirelessGroupBox->sizePolicy().hasHeightForWidth());
@@ -834,6 +888,10 @@ public:
         installSndcpyBtn->setText(QCoreApplication::translate("Widget", "install sndcpy", nullptr));
         startAudioBtn->setText(QCoreApplication::translate("Widget", "start audio", nullptr));
         stopAudioBtn->setText(QCoreApplication::translate("Widget", "stop audio", nullptr));
+        volumeGroupBox->setTitle(QCoreApplication::translate("Widget", "Audio Volume", nullptr));
+        volumeLabel->setText(QCoreApplication::translate("Widget", "Volume:", nullptr));
+        volumeValueLabel->setText(QCoreApplication::translate("Widget", "50%", nullptr));
+        muteBtn->setText(QCoreApplication::translate("Widget", "Mute", nullptr));
         wirelessGroupBox->setTitle(QCoreApplication::translate("Widget", "Wireless", nullptr));
         deviceIpEdt->setCurrentText(QString());
         devicePortEdt->setText(QString());
