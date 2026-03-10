@@ -21,15 +21,15 @@ jobs:
     runs-on: macos-13
     strategy:
       matrix:
-        qt-ver: [5.15.2, 6.5.3]        
+        build-arch: [x64, arm64]
         # 配置qt-ver的额外设置qt-arch-install，build-arch
         include:
-          - qt-ver: 5.15.2
+          - build-arch: x64
+            qt-ver: 6.10.2
             qt-arch-install: clang_64
-            build-arch: x64
-          - qt-ver: 6.5.3
-            qt-arch-install: arm64
-            build-arch: arm64
+          - build-arch: arm64
+            qt-ver: 6.10.2
+            qt-arch-install: macos
     env:
       target-name: QtScrcpy
       qt-install-path: ${{ github.workspace }}/${{ matrix.qt-ver }}
@@ -41,14 +41,7 @@ jobs:
         with:
           path: ${{ env.qt-install-path }}/${{ matrix.qt-arch-install }}
           key: ${{ runner.os }}/${{ matrix.qt-ver }}/${{ matrix.qt-arch-install }}
-      - name: Install Qt5
-        if: startsWith(matrix.qt-ver, '5.')
-        uses: jurplel/install-qt-action@v4.1.1
-        with:
-          version: ${{ matrix.qt-ver }}
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
-      - name: Install Qt6        
-        if: startsWith(matrix.qt-ver, '6.')
+      - name: Install Qt
         uses: jurplel/install-qt-action@v4.1.1
         with:
           version: ${{ matrix.qt-ver }}
