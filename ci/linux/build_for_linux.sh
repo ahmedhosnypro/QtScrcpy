@@ -7,8 +7,8 @@ echo ---------------------------------------------------------------
 echo Current ENV_QT_PATH: $ENV_QT_PATH
 echo Current directory: $(pwd)
 # Set variables
-qt_cmake_path=$ENV_QT_PATH/gcc_64/lib/cmake/Qt5
-export PATH=$qt_gcc_path/bin:$PATH
+qt_cmake_path=$ENV_QT_PATH/gcc_64/lib/cmake/Qt6
+export PATH=$ENV_QT_PATH/gcc_64/bin:$PATH
 
 # Remember working directory
 old_cd=$(pwd)

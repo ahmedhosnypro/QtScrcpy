@@ -24,16 +24,9 @@ set old_cd=%cd%
 cd /d %~dp0
 
 :: 启动参数声明
-set cpu_mode=x86
+set cpu_mode=x64
 set publish_dir=%2
 set errno=1
-
-if /i "%1"=="x86" (
-    set cpu_mode=x86
-)
-if /i "%1"=="x64" (
-    set cpu_mode=x64
-)
 
 :: 提示
 echo current build mode: %cpu_mode%
@@ -45,23 +38,14 @@ set jar_path=%script_path%..\..\QtScrcpy\QtScrcpyCore\src\third_party\scrcpy-ser
 set keymap_path=%script_path%..\..\keymap
 set config_path=%script_path%..\..\config
 
-if /i %cpu_mode% == x86 (
-    set publish_path=%script_path%%publish_dir%\
-    set release_path=%script_path%..\..\output\x86\RelWithDebInfo
-    set qt_msvc_path=%qt_msvc_path%\msvc2019\bin
-) else (
-    set publish_path=%script_path%%publish_dir%\
-    set release_path=%script_path%..\..\output\x64\RelWithDebInfo
-    set qt_msvc_path=%qt_msvc_path%\msvc2019_64\bin
-)
+set publish_path=%script_path%%publish_dir%\
+set release_path=%script_path%..\..\output\x64\RelWithDebInfo
+set qt_msvc_path=%qt_msvc_path%\msvc2022_64\bin
+
 set PATH=%qt_msvc_path%;%PATH%
 
 :: 注册vc环境(注册以后，windeployqt会把vc_redist复制过来（vcruntime安装包）)
-if /i %cpu_mode% == x86 (
-    call %vcvarsall% %cpu_mode%
-) else (
-    call %vcvarsall% %cpu_mode%
-)
+call %vcvarsall% %cpu_mode%
 
 if exist %publish_path% (
     rmdir /s/q %publish_path%
@@ -93,25 +77,14 @@ del %publish_path%\imageformats\qwbmp.dll
 del %publish_path%\imageformats\qwebp.dll
 
 :: 删除vc_redist，自己copy vcruntime dll
-if /i %cpu_mode% == x86 (
-    del %publish_path%\vc_redist.x86.exe
-) else (
-    del %publish_path%\vc_redist.x64.exe
-)
+del %publish_path%\vc_redist.x64.exe
 
 :: copy vcruntime dll
-if /i %cpu_mode% == x64 (
-    cp "C:\Windows\System32\msvcp140_1.dll" %publish_path%\msvcp140_1.dll
-    cp "C:\Windows\System32\msvcp140.dll" %publish_path%\msvcp140.dll
-    cp "C:\Windows\System32\vcruntime140.dll" %publish_path%\vcruntime140.dll
-    :: 只有x64需要
-    cp "C:\Windows\System32\vcruntime140_1.dll" %publish_path%\vcruntime140_1.dll
-) else (
-    cp "C:\Windows\SysWOW64\msvcp140_1.dll" %publish_path%\msvcp140_1.dll
-    cp "C:\Windows\SysWOW64\msvcp140.dll" %publish_path%\msvcp140.dll
-    cp "C:\Windows\SysWOW64\vcruntime140.dll" %publish_path%\vcruntime140.dll
-    
-)
+cp "C:\Windows\System32\msvcp140_1.dll" %publish_path%\msvcp140_1.dll
+cp "C:\Windows\System32\msvcp140.dll" %publish_path%\msvcp140.dll
+cp "C:\Windows\System32\vcruntime140.dll" %publish_path%\vcruntime140.dll
+:: 只有x64需要
+cp "C:\Windows\System32\vcruntime140_1.dll" %publish_path%\vcruntime140_1.dll
 
 ::cp "C:\Program Files (x86)\Microsoft Visual Studio\Installer\VCRUNTIME140.dll" %publish_path%\VCRUNTIME140.dll
 ::cp "C:\Program Files (x86)\Microsoft Visual Studio\Installer\api-ms-win-crt-runtime-l1-1-0.dll" %publish_path%\api-ms-win-crt-runtime-l1-1-0.dll
