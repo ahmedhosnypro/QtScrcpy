@@ -44,6 +44,7 @@ private:
     void onFrame(int width, int height, uint8_t* dataY, uint8_t* dataU, uint8_t* dataV,
                  int linesizeY, int linesizeU, int linesizeV) override;
     void updateFPS(quint32 fps) override;
+    void updateLatency(quint32 latency) override;
     void grabCursor(bool grab) override;
 
     void updateStyleSheet(bool vertical);

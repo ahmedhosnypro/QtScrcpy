@@ -79,7 +79,7 @@ void VideoForm::initUI()
     ft.setBold(true);
     m_fpsLabel->setFont(ft);
     m_fpsLabel->move(5, 15);
-    m_fpsLabel->setMinimumWidth(100);
+    m_fpsLabel->setMinimumWidth(300);
     m_fpsLabel->setStyleSheet(R"(QLabel {color: #00FF00;})");
 
     setMouseTracking(true);
@@ -553,7 +553,22 @@ void VideoForm::updateFPS(quint32 fps)
     if (!m_fpsLabel) {
         return;
     }
-    m_fpsLabel->setText(QString("FPS:%1").arg(fps));
+    QString text = m_fpsLabel->text();
+    int latencyIndex = text.indexOf(", Latency:");
+    QString latencyStr = (latencyIndex != -1) ? text.mid(latencyIndex) : "";
+    m_fpsLabel->setText(QString("FPS:%1%2").arg(fps).arg(latencyStr));
+}
+
+void VideoForm::updateLatency(quint32 latency)
+{
+    if (!m_fpsLabel) {
+        return;
+    }
+    QString text = m_fpsLabel->text();
+    int latencyIndex = text.indexOf(", Latency:");
+    QString fpsStr = (latencyIndex != -1) ? text.left(latencyIndex) : text;
+    if (fpsStr.isEmpty()) fpsStr = "FPS:0";
+    m_fpsLabel->setText(QString("%1, Latency:%2ms").arg(fpsStr).arg(latency));
 }
 
 void VideoForm::grabCursor(bool grab)
