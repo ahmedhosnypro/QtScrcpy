@@ -53,7 +53,6 @@ static const QString s_vertShader = R"(
 
 // 片段着色器
 static QString s_fragShader = R"(
-    precision mediump float;        // 设置浮点数精度为中等精度
     varying vec2 textureOut;        // 由顶点着色器传递过来的纹理坐标
     uniform sampler2D textureY;     // uniform 纹理单元，利用纹理单元可以使用多个纹理
     uniform sampler2D textureU;     // sampler2D是2D采样器
