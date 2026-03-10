@@ -53,8 +53,8 @@ echo current build mode: $build_mode
 echo current cpu mode: $cpu_arch
 
 cmake_arch=x86_64
-if [ $cpu_arch == "x64" ]; then
-    qt_cmake_path=$ENV_QT_PATH/clang_64/lib/cmake/Qt5
+if [ "$cpu_arch" == "x64" ]; then
+    qt_cmake_path=$ENV_QT_PATH/macos/lib/cmake/Qt6
     cmake_arch=x86_64
 else
     qt_cmake_path=$ENV_QT_PATH/macos/lib/cmake/Qt6

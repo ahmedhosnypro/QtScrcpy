@@ -26,7 +26,7 @@ jobs:
         include:
           - build-arch: x64
             qt-ver: 6.10.2
-            qt-arch-install: clang_64
+            qt-arch-install: macos
           - build-arch: arm64
             qt-ver: 6.10.2
             qt-arch-install: macos
