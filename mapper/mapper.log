@@ -1,0 +1,62 @@
+mapper started pid=12221
+kbd[0] path=/dev/input/event9 fd=5
+mouse[0] path=/dev/input/event6 fd=6
+mouse[1] path=/dev/input/event7 fd=7
+grab kbd fd=5 on=1
+grab mouse fd=6 on=1
+grab mouse fd=7 on=1
+grab kbd fd=5 on=0
+grab mouse fd=6 on=0
+grab mouse fd=7 on=0
+grab kbd fd=5 on=1
+grab mouse fd=6 on=1
+grab mouse fd=7 on=1
+grab kbd fd=5 on=0
+grab mouse fd=6 on=0
+grab mouse fd=7 on=0
+reload kbd[0] path=/dev/input/event9 fd=-1
+reload mouse[0] path=/dev/input/event6 fd=5
+reload mouse[1] path=/dev/input/event7 fd=6
+config reloaded
+reload kbd[0] path=/dev/input/event9 fd=5
+reload mouse[0] path=/dev/input/event6 fd=6
+reload mouse[1] path=/dev/input/event7 fd=7
+config reloaded
+grab kbd fd=5 on=1
+grab mouse fd=6 on=1
+grab mouse fd=7 on=1
+grab kbd fd=5 on=0
+grab mouse fd=6 on=0
+grab mouse fd=7 on=0
+grab kbd fd=5 on=1
+grab mouse fd=6 on=1
+grab mouse fd=7 on=1
+grab kbd fd=5 on=0
+grab mouse fd=6 on=0
+grab mouse fd=7 on=0
+reload kbd[0] path=/dev/input/event9 fd=5
+reload mouse[0] path=/dev/input/event6 fd=-1
+reload mouse[1] path=/dev/input/event7 fd=6
+config reloaded
+grab kbd fd=5 on=1
+grab mouse fd=6 on=1
+grab kbd fd=5 on=0
+grab mouse fd=6 on=0
+reload kbd[0] path=/dev/input/event9 fd=5
+reload mouse[0] path=/dev/input/event6 fd=6
+reload mouse[1] path=/dev/input/event7 fd=7
+config reloaded
+grab kbd fd=5 on=1
+grab mouse fd=6 on=1
+grab mouse fd=7 on=1
+grab kbd fd=5 on=0
+grab mouse fd=6 on=0
+grab mouse fd=7 on=0
+reload kbd[0] path=/dev/input/event9 fd=-1
+reload mouse[0] path=/dev/input/event6 fd=5
+reload mouse[1] path=/dev/input/event7 fd=6
+config reloaded
+reload kbd[0] path=/dev/input/event9 fd=5
+reload mouse[0] path=/dev/input/event6 fd=-1
+reload mouse[1] path=/dev/input/event7 fd=6
+config reloaded

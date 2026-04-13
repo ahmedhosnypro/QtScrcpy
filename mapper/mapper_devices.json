@@ -1,0 +1,21 @@
+{
+  "keyboards": [
+    {
+      "path": "/dev/input/event9",
+      "name": "USB Keyboard",
+      "enabled": true
+    }
+  ],
+  "mice": [
+    {
+      "path": "/dev/input/event6",
+      "name": "USB Gaming Mouse",
+      "enabled": false
+    },
+    {
+      "path": "/dev/input/event7",
+      "name": "USB Gaming Mouse",
+      "enabled": true
+    }
+  ]
+}
