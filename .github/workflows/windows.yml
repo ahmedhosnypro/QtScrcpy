@@ -60,7 +60,7 @@ jobs:
           # Architecture for Windows/Android
           arch: ${{ matrix.qt-arch }}
           modules: qtmultimedia
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          cache: true
       # 拉取代码
       - uses: actions/checkout@v2
         with:
