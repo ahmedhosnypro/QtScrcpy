@@ -31,7 +31,7 @@ jobs:
         with:
           version: ${{ matrix.qt-ver }}
           modules: qtmultimedia
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          cache: true
       - name: Cache Qt
         id: cache-qt
         uses: actions/cache@v4
