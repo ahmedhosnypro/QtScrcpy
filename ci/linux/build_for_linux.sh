@@ -7,14 +7,19 @@ echo ---------------------------------------------------------------
 echo Current ENV_QT_PATH: $ENV_QT_PATH
 echo Current directory: $(pwd)
 # Set variables
-qt_cmake_path=$ENV_QT_PATH/gcc_64/lib/cmake/Qt6
-export PATH=$ENV_QT_PATH/gcc_64/bin:$PATH
+if [ -n "$ENV_QT_PATH" ]; then
+    qt_cmake_path=$ENV_QT_PATH/gcc_64/lib/cmake/Qt6
+    export PATH=$ENV_QT_PATH/gcc_64/bin:$PATH
+    cmake_params="-DCMAKE_PREFIX_PATH=$qt_cmake_path -DCMAKE_BUILD_TYPE=$build_mode"
+else
+    cmake_params="-DCMAKE_BUILD_TYPE=$build_mode"
+fi
 
 # Remember working directory
 old_cd=$(pwd)
 
 # Set working dir to the script's path
-cd $(dirname "$0")/.../
+cd $(dirname "$0")/../../
 
 echo
 echo
@@ -43,7 +48,6 @@ if [ -d "$output_path" ]; then
     rm -rf $output_path
 fi
 
-cmake_params="-DCMAKE_PREFIX_PATH=$qt_cmake_path -DCMAKE_BUILD_TYPE=$build_mode"
 cmake $cmake_params .
 if [ $? -ne 0 ] ;then
     echo "error: CMake failed, exiting......"

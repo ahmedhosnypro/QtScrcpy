@@ -70,12 +70,20 @@ Dialog::Dialog(QWidget *parent) : QWidget(parent), ui(new Ui::Widget)
             //log = m_adb.getStdOut();
             if (args.contains("devices")) {
                 QStringList devices = m_adb.getDevicesSerialFromStdOut();
+                QString currentSerial = ui->serialBox->currentText();
+                ui->serialBox->blockSignals(true);
                 ui->serialBox->clear();
                 ui->connectedPhoneList->clear();
                 for (auto &item : devices) {
                     ui->serialBox->addItem(item);
                     ui->connectedPhoneList->addItem(Config::getInstance().getNickName(item) + "-" + item);
                 }
+                if (!currentSerial.isEmpty() && devices.contains(currentSerial)) {
+                    ui->serialBox->setCurrentText(currentSerial);
+                }
+                ui->serialBox->blockSignals(false);
+                // Trigger nickname update manually since signals were blocked
+                on_serialBox_currentTextChanged(ui->serialBox->currentText());
             } else if (args.contains("show") && args.contains("wlan0")) {
                 QString ip = m_adb.getDeviceIPFromStdOut();
                 if (ip.isEmpty()) {
@@ -97,6 +105,8 @@ Dialog::Dialog(QWidget *parent) : QWidget(parent), ui(new Ui::Widget)
                     break;
                 }
                 ui->deviceIpEdt->setEditText(ip);
+            } else {
+                on_updateDevice_clicked();
             }
             break;
         }
@@ -337,12 +347,18 @@ void Dialog::on_updateDevice_clicked()
 
 void Dialog::on_startServerBtn_clicked()
 {
-    outLog("start server...", false);
+    QString serial = ui->serialBox->currentText().trimmed();
+    if (serial.isEmpty()) {
+        outLog("error: no device selected", true);
+        return;
+    }
+
+    outLog(QString("start server for %1...").arg(serial), false);
 
     // this is ok that "original" toUshort is 0
     quint16 videoSize = ui->maxSizeBox->currentText().trimmed().toUShort();
     qsc::DeviceParams params;
-    params.serial = ui->serialBox->currentText().trimmed();
+    params.serial = serial;
     params.maxSize = videoSize;
     params.bitRate = getBitRate();
     // on devices with Android >= 10, the capture frame rate can be limited
@@ -378,7 +394,9 @@ void Dialog::on_startServerBtn_clicked()
     params.codecName = Config::getInstance().getCodecName();
     params.scid = QRandomGenerator::global()->bounded(1, 10000) & 0x7FFFFFFF;
 
-    qsc::IDeviceManage::getInstance().connectDevice(params);
+    if (!qsc::IDeviceManage::getInstance().connectDevice(params)) {
+        outLog("start server failed", true);
+    }
 }
 
 void Dialog::on_stopServerBtn_clicked()
@@ -775,7 +793,7 @@ void Dialog::on_useSingleModeCheck_clicked()
     adjustSize();
 }
 
-void Dialog::on_serialBox_currentIndexChanged(const QString &arg1)
+void Dialog::on_serialBox_currentTextChanged(const QString &arg1)
 {
     ui->userNameEdt->setText(Config::getInstance().getNickName(arg1));
 }

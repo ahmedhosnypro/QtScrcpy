@@ -52,6 +52,20 @@ jobs:
           fetch-depth: 0
           submodules: 'true'
           ssh-key: ${{ secrets.BOT_SSH_KEY }}
+      - name: Download scrcpy-server, adb and sndcpy
+        run: |
+          curl -L -o QtScrcpy/QtScrcpyCore/src/third_party/scrcpy-server https://github.com/Genymobile/scrcpy/releases/download/v3.3.4/scrcpy-server-v3.3.4
+          
+          curl -L -o adb.zip https://dl.google.com/android/repository/platform-tools-latest-darwin.zip
+          unzip -o adb.zip platform-tools/adb
+          mv platform-tools/adb QtScrcpy/QtScrcpyCore/src/third_party/adb/mac/adb
+          
+          curl -L -o sndcpy.zip https://github.com/rom1v/sndcpy/releases/download/v1.1/sndcpy-v1.1.zip
+          unzip -o sndcpy.zip sndcpy.apk
+          mv sndcpy.apk QtScrcpy/sndcpy/sndcpy.apk
+          
+          rm adb.zip sndcpy.zip
+          rm -rf platform-tools
       # 编译
       - name: Build MacOS
         env:

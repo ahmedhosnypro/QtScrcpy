@@ -67,6 +67,22 @@ jobs:
           fetch-depth: 0
           submodules: 'true'
           ssh-key: ${{ secrets.BOT_SSH_KEY }}
+      - name: Download scrcpy-server, adb and sndcpy
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Uri https://github.com/Genymobile/scrcpy/releases/download/v3.3.4/scrcpy-server-v3.3.4 -OutFile QtScrcpy/QtScrcpyCore/src/third_party/scrcpy-server
+          
+          Invoke-WebRequest -Uri https://dl.google.com/android/repository/platform-tools-latest-windows.zip -OutFile adb.zip
+          Expand-Archive -Path adb.zip -DestinationPath . -Force
+          Move-Item -Path platform-tools/adb.exe -Destination QtScrcpy/QtScrcpyCore/src/third_party/adb/win/adb.exe -Force
+          Move-Item -Path platform-tools/AdbWinApi.dll -Destination QtScrcpy/QtScrcpyCore/src/third_party/adb/win/AdbWinApi.dll -Force
+          Move-Item -Path platform-tools/AdbWinUsbApi.dll -Destination QtScrcpy/QtScrcpyCore/src/third_party/adb/win/AdbWinUsbApi.dll -Force
+          Remove-Item -Path adb.zip, platform-tools -Recurse
+          
+          Invoke-WebRequest -Uri https://github.com/rom1v/sndcpy/releases/download/v1.1/sndcpy-v1.1.zip -OutFile sndcpy.zip
+          Expand-Archive -Path sndcpy.zip -DestinationPath . -Force
+          Move-Item -Path sndcpy.apk -Destination QtScrcpy/sndcpy/sndcpy.apk -Force
+          Remove-Item -Path sndcpy.zip
       # 编译msvc
       - name: Build MSVC
         # shell介绍 https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
